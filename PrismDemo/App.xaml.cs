@@ -1,5 +1,7 @@
-﻿using Prism.DryIoc;
+﻿using ModuleA;
+using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Modularity;
 using Prism.Regions;
 using PrismDemo.Core.Regions;
 using PrismDemo.Views;
@@ -27,6 +29,15 @@ namespace PrismDemo
         {
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
             regionAdapterMappings.RegisterMapping(typeof(StackPanel),Container.Resolve<StackPanelRegionAdapter>());
+        }
+
+        /// <summary>
+        ///   Regsiter Module using Code 
+        /// </summary>
+        /// <param name="moduleCatalog"></param>
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<ModuleAModule>();
         }
     }
 }
