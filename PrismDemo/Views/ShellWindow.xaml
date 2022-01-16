@@ -11,7 +11,8 @@
         <!--<TextBlock Text="Prism Application Shell Window TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    FontSize="40"></TextBlock>-->
         <ContentControl prism:RegionManager.RegionName="ContentRegion2"/>
-    
+        <ContentControl prism:RegionManager.RegionName="ContentRegionViewControlA"/>
+
         <StackPanel prism:RegionManager.RegionName="ContentRegion"/>
 
     </Grid>

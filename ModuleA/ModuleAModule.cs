@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
+using Prism.Mvvm;
+using ModuleA.ViewModels;
 
 namespace ModuleA
 {
@@ -20,13 +22,13 @@ namespace ModuleA
         public void OnInitialized(IContainerProvider containerProvider)
         {
             // using View Discovery method to inject view onto  ContentRegion 
-            // _regionManager.RegisterViewWithRegion("ContentRegion2", typeof(ViewA));
+            _regionManager.RegisterViewWithRegion("ContentRegionViewControlA", typeof(ViewControlA));
 
             //View Injection method
             IRegion region = _regionManager.Regions["ContentRegion2"];
             var view1 = containerProvider.Resolve<ViewA>();
             region.Add(view1);
-
+            
             var view2 = containerProvider.Resolve<ViewA>();
             view2.Content = new TextBlock()
             {
@@ -42,7 +44,15 @@ namespace ModuleA
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-           
+            //for custom viewmodelname  view locator register
+         //   ViewModelLocationProvider.Register<ViewControlA, ViewControlAViewModel>();
+
+            //FacoryMethod
+            ViewModelLocationProvider.Register<ViewControlA>(() =>
+            {
+                return new ViewControlAViewModel() { Title = "Hello from Factory" };
+            } 
+            );
         }
     }
 }
