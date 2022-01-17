@@ -9,7 +9,10 @@
              mc:Ignorable="d" 
              
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="{Binding Title}" />
-    </Grid>
+    <StackPanel>
+        <CheckBox IsChecked="{Binding ChkClick}">Click CheckBox</CheckBox>
+        <Button Command="{Binding ClickCommand}">Click Me</Button>
+        <TextBlock Text="{Binding Text}" />
+       
+    </StackPanel>
 </UserControl>
